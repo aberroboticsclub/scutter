@@ -15,20 +15,21 @@ SoftwareSerial mySerial(2, 3); // RX, TX
 
 
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
-int delayval = 500; // delay for half a second
+int delayval = 1000; // delay for half a second
 
-//between 0 and 255
+//between 0 and 255  RGB
  
-uint32_t skyBlue = pixels.Color(135, 206, 255);
-uint32_t maize = pixels.Color(128, 158, 10);
-uint32_t lavender = pixels.Color(88, 2, 163);
-uint32_t seaFoam = pixels.Color(32, 178, 170);
-uint32_t spring = pixels.Color(102, 205, 0);
-uint32_t orange = pixels.Color(250, 20, 20);
-uint32_t pink = pixels.Color(250, 0, 87);
 uint32_t red = pixels.Color(128, 0, 0);
+uint32_t orange = pixels.Color(200, 30, 0);
+uint32_t yellow = pixels.Color(150, 60, 0);
+uint32_t green = pixels.Color(102, 190, 0);
+uint32_t lightblue = pixels.Color(32, 178, 170);
+uint32_t darkblue = pixels.Color(0, 0, 255);
+uint32_t purple = pixels.Color(180, 2, 160);
+uint32_t pink = pixels.Color(150, 0, 70);
 
-int group[8] = {lavender, pink, red, skyBlue, maize, seaFoam, spring, orange};
+
+int group[8] = { red, orange, yellow, green, lightblue, darkblue, purple, pink};
 
 
 
@@ -57,10 +58,11 @@ void loop() {
 
 
   for (int j = 0; j < 8; j++) {
-    //pixels.setPixelColor(0, group[j]); // Moderately bright green color.
-    //pixels.setPixelColor(1, group[j]);
-    pixels.setPixelColor(0, orange);
-    pixels.setPixelColor(1, orange);
+   pixels.clear();
+    pixels.setPixelColor(0, group[j]); // Moderately bright green color.
+    pixels.setPixelColor(1, group[j]);
+    //pixels.setPixelColor(0, pink);
+    //pixels.setPixelColor(1, pink);
     pixels.show(); // This sends the updated pixel color to the hardware.
 
     delay(delayval); // Delay for a period of time (in milliseconds).
