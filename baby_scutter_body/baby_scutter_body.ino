@@ -2,57 +2,12 @@
 
 //Debug lines off FALSE
 //Debug lines on TRUE
-#define DEBUG_SONAR false
-#define DEBUG_FLICKSWITCH false
 #define DEBUG_MAPRC false
 #define DEBUG_ACTRC false
 
 
 //The time for the serial print delay
 #define printDelay 500
-
-
-//Define Sonar pins
-#define SONAR1_TRIGGER 22
-#define SONAR1_ECHO 23
-#define SONAR2_TRIGGER 24
-#define SONAR2_ECHO 25
-#define SONAR3_TRIGGER 26
-#define SONAR3_ECHO 27
-#define SONAR4_TRIGGER 28
-#define SONAR4_ECHO 29
-#define SONAR5_TRIGGER 30
-#define SONAR5_ECHO 31
-#define SONAR6_TRIGGER 32
-#define SONAR6_ECHO 33
-
-//Declaring some sonar variables
-#define MAXIMUM_SONAR 200000
-
-
-//Create sonars
-NewPing sonar1(SONAR1_TRIGGER, SONAR1_ECHO, MAXIMUM_SONAR);
-NewPing sonar2(SONAR2_TRIGGER, SONAR2_ECHO, MAXIMUM_SONAR);
-NewPing sonar3(SONAR3_TRIGGER, SONAR3_ECHO, MAXIMUM_SONAR);
-NewPing sonar4(SONAR4_TRIGGER, SONAR4_ECHO, MAXIMUM_SONAR);
-NewPing sonar5(SONAR5_TRIGGER, SONAR5_ECHO, MAXIMUM_SONAR);
-NewPing sonar6(SONAR6_TRIGGER, SONAR6_ECHO, MAXIMUM_SONAR);
-
-//Store ultrasonic values
-int sonarValue1 = 0;
-int sonarValue2 = 0;
-int sonarValue3 = 0;
-int sonarValue4 = 0;
-int sonarValue5 = 0;
-int sonarValue6 = 0;
-
-
-//Flick Switch variables
-int flickSwitchPin = A0;
-int flickSwitchPre;
-bool flickSwitch;
-
-byte relay = 53;
 
 
 //Motor Pins
@@ -116,19 +71,7 @@ void setup() {
 
 
 void loop() {
-  RCorAI();
-  //RC();
-}
-
-
-void RCorAI() {
-  flickSwitchStatus();
-  if (flickSwitch == true) {
-    AI();
-  }
-  else {
-    RC();
-  }
+  RC();
 }
 
 
@@ -139,36 +82,6 @@ void RC() {
   actRC();
 }
 
-
-void AI() {
-  Serial.println("This function will make the wheelchair autonomous");
-  delay(printDelay);
-  pingSonar();
-}
-
-
-void flickSwitchStatus() {
-  flickSwitchPre = analogRead(flickSwitchPin);
-  if (flickSwitchPre == 0) {
-    flickSwitch = true;
-  }
-  else {
-    flickSwitch = false;
-  }
-#ifdef DEBUG_FLICKSWITCH
-  if (DEBUG_FLICKSWITCH == true) {
-    printSpacer();
-    if (flickSwitch == true) {
-      Serial.println("Wheelchair is set to Autonomous!");
-      delay(printDelay);
-    }
-    else {
-      Serial.println("Wheelchair is set to Remote Control!");
-      delay(printDelay);
-    }
-  }
-#endif
-}
 
 
 void actRC() {
