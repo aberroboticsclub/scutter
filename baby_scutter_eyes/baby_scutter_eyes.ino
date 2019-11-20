@@ -14,7 +14,7 @@ SoftwareSerial mySerial(2, 3); // RX, TX
 
 
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
-int delayval = 1000; // delay for half a second
+int delayval = 500; // delay for half a second
 
 //between 0 and 25  RGB
  
@@ -161,43 +161,8 @@ void loop() {
     pixels.setPixelColor(1,white);
     pixels.show();
     delay(delayval);
-//
-//    pixels.setPixelColor(0,lightblue);
-//    pixels.setPixelColor(1,lightblue);
-//    pixels.show();
-//    delay(delayval);
-//    pixels.setPixelColor(0,greenblue);
-//    pixels.setPixelColor(1,greenblue);
-//    pixels.show();
-//    delay(delayval);
-//    pixels.setPixelColor(0,darkblue);
-//    pixels.setPixelColor(1,darkblue);
-//    pixels.show();
-//    delay(delayval);
-//    pixels.setPixelColor(0,purple);
-//    pixels.setPixelColor(1,purple);
-//    pixels.show();
-//    delay(delayval);
-//    pixels.setPixelColor(0,lightpurple);
-//    pixels.setPixelColor(1,lightpurple);
-//    pixels.show();
-//    delay(delayval);
-//    pixels.setPixelColor(0,pink);
-//    pixels.setPixelColor(1,pink);
-//    pixels.show();
-//    delay(delayval);
-//    pixels.setPixelColor(0,redpink);
-//    pixels.setPixelColor(1,redpink);
-//    pixels.show();
-//    delay(delayval);
-//    pixels.setPixelColor(0,lightpink);
-//    pixels.setPixelColor(1,lightpink);
-//    pixels.show();
-//    delay(delayval);
-//    pixels.setPixelColor(0,white);
-//    pixels.setPixelColor(1,white);
-//    pixels.show();
-//    delay(delayval);
+    
+
   }
 /*
   //blueooth serial code
